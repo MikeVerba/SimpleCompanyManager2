@@ -2,6 +2,8 @@ package managers;
 
 import companyModules.Company;
 
+import java.io.*;
+
 public class CompanyManager extends Manager {
     public void printAllCompanyInformation(Company company) {
         String companyName = company.getCompanyName();
@@ -37,5 +39,29 @@ public class CompanyManager extends Manager {
 
     public Company createCompany(String companyName, String headquarters, String adress, double startUpCapital) {
         return new Company(companyName, headquarters, adress, startUpCapital);
+    }
+
+    public void writeCompanyToFile(Company company) {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("Company.txt");
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(company);
+            objectOutputStream.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public Company readCompanyFromFile() {
+        Company company = null;
+        try {
+            FileInputStream fileInputStream = new FileInputStream("Company.txt");
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            company = (Company) objectInputStream.readObject();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return company;
     }
 }

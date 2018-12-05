@@ -48,8 +48,7 @@ public class Menu {
 
     public void runMainMenu() {
         boolean isProgramRunning = true;
-
-        runCreateCompanyModule();
+        runStartingMenu();
 
         while (isProgramRunning) {
             getPrinter().print(textMessages.getEmptyMessage());
@@ -84,6 +83,27 @@ public class Menu {
         }
     }
 
+    public void runStartingMenu() {
+        boolean isModuleRunning = true;
+        while (isModuleRunning) {
+            getPrinter().print(textMessages.startingMenuMessage);
+
+            String choice = getScanner().next();
+            switch (choice) {
+                case "1":
+                    runCreateCompanyModule();
+                    isModuleRunning = false;
+                    break;
+                case "2":
+                    runReadCompanyFromFileModule();
+                    isModuleRunning = false;
+                    break;
+                default:
+                    getPrinter().print(textMessages.getUnknownInputMessage());
+            }
+        }
+    }
+
 
     public void runCompanyModule() {
 
@@ -112,6 +132,9 @@ public class Menu {
                     runChangeCompanyStartUpCapitalSubmodule();
                     break;
                 case "6":
+                    runWriteCompanyToAFileSubmodule();
+                    break;
+                case "7":
                     getPrinter().print(textMessages.getExitMessageCompanyModule());
                     isCompanyModuleRunning = false;
                     break;
@@ -244,8 +267,9 @@ public class Menu {
 
     }
 
-    public void loadCompanyFromFileModule() {
-
+    public void runReadCompanyFromFileModule() {
+        company = companyManager.readCompanyFromFile();
+        getPrinter().print(textMessages.companyWasLoaded);
     }
 
     public void runChangeCompanyNameSubmodule() {
@@ -274,6 +298,11 @@ public class Menu {
         String newCompanyStartUpCapital = getScanner().next();
         companyManager.changeCompanyStartUpCapital(company, Double.valueOf(newCompanyStartUpCapital));
         getPrinter().print(textMessages.getCompanyStartUpCapitalWasChanged());
+    }
+
+    public void runWriteCompanyToAFileSubmodule() {
+        companyManager.writeCompanyToFile(company);
+        getPrinter().print(textMessages.saveSuccesful);
     }
 
     public void runAddEmployeeSubmodule() {

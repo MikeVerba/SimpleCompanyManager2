@@ -1,9 +1,10 @@
 package companyModules;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Company {
+public class Company implements Serializable {
     private String companyName;
     private String headquarters;
     private String adress;

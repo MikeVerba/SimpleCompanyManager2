@@ -4,6 +4,9 @@ public class TextMessages {
     private String emptyMessage = "";
     private String unknownInputMessage = "Niewłaściwe dane. Podaj właściwe dane.";
     private String welcomeMessage = "****Witaj w programie do zarządzania Twoją firmą****";
+    public String startingMenuMessage = "Wpisz wybrany numer modułu: \n" +
+            "1. Stworzenie nowej firmy \n" +
+            "2. Wczytanie stanu zapisanej firmy";
     private String mainMenuMessage = "Wpisz wybrany numer modułu: \n" +
             "1. Zarządzanie firmą \n" +
             "2. Zarzadzanie pracownikami \n" +
@@ -16,7 +19,8 @@ public class TextMessages {
             "3. Zmiana siedziby firmy  \n" +
             "4. Zmiana adresu firmy \n" +
             "5. Zmiana majątku początkowego \n" +
-            "6. Wyjdź z modułu zarządzanie firmą";
+            "6. Zapisanie stanu firmy \n" +
+            "7. Wyjdź z modułu zarządzanie firmą";
     private String employeeModuleMessage = "Wybierz : \n" +
             "1. Dodaj pracownika \n" +
             "2. Wyświetlanie pracowników \n" +
@@ -58,6 +62,9 @@ public class TextMessages {
 
     private String changeCompanyStartUpCapital = "Podaj nowy majątek początkowy firmy: ";
     private String companyStartUpCapitalWasChanged = "Majątek początkowy firmy został zmieniony";
+
+    public String saveSuccesful = "Zapisano informacje o firmie";
+    public String companyWasLoaded = "Wczytano informacje o firmie";
 
     private String exitMessageCompanyModule = "Moduł zarządzania firmą został zamknięty";
 
